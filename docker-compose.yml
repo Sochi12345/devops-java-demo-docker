@@ -8,6 +8,10 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgress"]
+      interval: 10s
+      retries: 5
 
   app:
     build: .
@@ -20,7 +24,9 @@ services:
       SPRING_DATASOURCE_PASSWORD: demo_pass
     restart: unless-stopped
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+       
 
 volumes:
   db_data:

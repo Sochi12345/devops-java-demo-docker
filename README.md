@@ -40,3 +40,12 @@ The project demonstrates building, containerizing, and running a Java applicatio
 ```bash
 git clone https://github.com/sochi12345/devops-java-demo-docker.git
 cd devops-java-demo-docker
+
+## How It Runs
+
+This project uses Docker Compose to run:
+- A Java application container
+- A PostgreSQL database container
+
+Configuration is handled via environment variables.
+Containers are configured with automatic restart policies for reliability.
